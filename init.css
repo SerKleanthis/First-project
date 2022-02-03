@@ -1,0 +1,386 @@
+
+/* main elements */
+body {
+    margin: 0;
+    font-family: 'Roboto Condensed';
+}
+
+li, a, button{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+article, p , td, th{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+    background-color: #24252a;
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+}
+
+h1{
+    margin: 50px 20px 50px 20px ;
+    text-align: center;
+    grid-area: title;
+}
+
+
+
+/* classes */
+
+/* navigator menu */
+.nav-items{
+    list-style: none;
+    z-index: 2;
+}
+
+.nav-items li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.nav-items a{
+    transition: all 0.3s ease 0s;
+}
+
+.nav-items a:hover{
+    color: #0088a9;
+}
+
+/* logo */
+.mobile-olympics-logo {
+    display: none;
+}
+
+/* button */
+.connect-button{
+    padding: 9px 25px;
+    background-color: rgba(0, 136, 169, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.connect-button:hover{
+    background-color: rgba(0, 136, 169, 0.8);
+}
+
+.button-person{
+    display: none;
+}
+
+.menu-button-full{
+    display: block;
+    width: 70px;
+}
+
+.menu-button{
+    display: none;
+}
+
+[tabindex] {
+     outline: none !important;
+}
+
+/* info */
+.top-info{
+    margin: 8px;
+    grid-area: info;
+}
+
+/* image */
+.top-image{
+    
+    margin: 8px;
+    width: 100%;
+    grid-area:  top-img;
+}
+
+/* h2 */
+.table-tittle{
+    text-align: center;
+    grid-area: table-tittle;
+}
+
+/* text */
+.table-desc{
+    margin: 8px;
+    grid-area: table-desc;
+}
+
+/* athlete style and hover */
+.athlete{
+    color: #0088a9;
+}
+
+.athlete:hover{
+    color: #ee2e4e;
+
+}
+
+/* table css*/
+.uomTrack{
+    width: 100%; 
+    margin: 8px;
+    border-collapse: collapse; 
+    grid-area: tb-olymp;
+}
+
+.uomTrack tr:nth-of-type(odd) { 
+    background: #eee; 
+}
+
+.uomTrack th { 
+    background: #0088a9; 
+    color: white; 
+    font-weight: bold; 
+}
+
+.uomTrack td, th { 
+    padding: 5px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+}
+
+.custom-rank{
+    color: black;
+    border-radius: 50%;
+    padding: 0px 5px;
+    /* height: 10px;
+    width: 5px; */
+}
+
+.centerAlign {
+    display: inline-flex;
+}
+
+.copyButton{
+    background: transparent;
+    border: 0px;
+    color: black;
+    cursor: pointer;
+}
+
+.deleteButton{
+    background: transparent;
+    border: 0px;
+    color: black;
+    cursor: pointer;
+}
+
+/* colors */
+#gold{
+    background: #ebbf59;
+}
+
+#silver{
+    background: #C0C0C0;
+}
+
+#bronze{
+    background: #CD7F32;
+}
+
+#copy{
+    padding: 5px;
+    margin: 5px;
+}
+
+#del{
+    padding: 5px;
+    margin: 5px;
+}
+
+/* main content */
+.main-content{
+    display: grid;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 50px;
+    /* background-color: aqua; */
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas: 
+        ". top-img ."
+        "info info info"
+        ". table-tittle ."
+        "table-desc table-desc table-desc"
+        "tb-olymp tb-olymp tb-olymp"
+        ". top-video ."
+}
+
+/* footer style */
+.olympics-footer{
+    background: #24252a;
+    width: auto;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.footer-social-icons {
+    margin-bottom: 20px;
+}
+
+.footer-social-icons a {
+    margin: 5px;
+    font-size: 25px;
+}
+
+/* responsive for 521-800px width */
+@media all and (max-width: 800px){
+    .mobile-olympics-logo {
+        width: 100%;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        display: block;
+    }
+    .nav-items {
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 0 ;
+        position: fixed;
+        left: -600px;
+        top: 80px;
+        width: 50%;
+        height: 100%;
+        /* margin-top: 25px; */
+        transition: left 0.5s;
+        background-color: #24252a;
+        /* overflow-y: hidden; */
+    }
+
+    .nav-items li{
+        display: block;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .nav-items a{
+        text-align: center;
+        padding: 10px;
+    }
+    .nav-items li:last-of-type a {
+        border-bottom: none;
+    }
+
+    .menu-button-full{
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+        width: 30px;
+        cursor: pointer;
+        position: relative;
+        top: 0px;
+        left: 0px;
+        transition: width 0.7s;
+    }
+
+    .menu-button:focus {
+        height: 0;
+        width: 0;
+    }
+    
+    .menu-button:focus + .nav-items{
+        left: 0px;
+        top: -16px;
+    }
+
+    .main-content{
+        width: 95%;
+        grid-template-areas: 
+        "top-img top-img top-img"
+        "info info info"
+        ". table-tittle ."
+        "table-desc table-desc table-desc"
+        "tb-olymp tb-olymp tb-olymp"
+        ". top-video ."
+    }
+
+    .uomTrack{
+        width: 95%;
+    }
+}
+
+/* responsive for 401-520px */
+@media all and (max-width:520px){
+
+    .uomTrack thead, tbody, th, td, tr { 
+		display: block; 
+	}
+
+    .uomTrack thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+    .uomTrack tr { border: 1px solid #ccc; }
+	
+	.uomTrack td { 
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+
+    .uomTrack td:before { 
+		position: absolute;
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	.uomTrack td:nth-of-type(1):before { content: "Rank"; }
+	.uomTrack td:nth-of-type(2):before { content: "Team"; }
+	.uomTrack td:nth-of-type(3):before { content: "Athlete"; }
+	.uomTrack td:nth-of-type(4):before { content: "Age"; }
+	.uomTrack td:nth-of-type(5):before { content: "Result"; }
+	.uomTrack td:nth-of-type(6):before { content: "Personal Best"; }
+	.uomTrack td:nth-of-type(7):before { content: "Notes"; }
+}
+
+/* responsive for less than 400px */
+@media all and (max-width: 400px){
+
+    .button-person{
+        display: block;
+        width: 32px;
+    }
+
+    .connect-button{
+        display: none;
+    }
+
+    .top-image{
+        margin: 0px;
+    }
+
+    .main-content{
+        width: 95%;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "top-img"
+        "info"
+        "table-tittle"
+        "table-desc"
+        "tb-olymp"
+        "top-video"
+    }
+}
