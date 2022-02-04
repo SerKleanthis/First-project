@@ -1,0 +1,15 @@
+{
+  "short_name": "UoMpr",
+  "name": "UoM Project",
+  "icons": [
+    {
+      "src": "assets/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "white",
+  "display": "standalone",
+  "description": "100m race"
+}

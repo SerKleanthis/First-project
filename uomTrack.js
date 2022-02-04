@@ -35,7 +35,7 @@
     const results = document.getElementById('results');
     const personal = document.getElementById('personal');
     var copyButton = document.getElementsByClassName('copyButton');
-    
+
     // OnLoad function 
     window.onload = function() {
       createTable();
@@ -341,5 +341,7 @@
           }
         }
       }
+
+  
 
 }());

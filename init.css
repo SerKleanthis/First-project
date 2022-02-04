@@ -65,7 +65,7 @@ h1{
 }
 
 /* button */
-.connect-button{
+.add-to-desktop-btn{
     padding: 9px 25px;
     background-color: rgba(0, 136, 169, 1);
     border: none;
@@ -74,7 +74,7 @@ h1{
     transition: all 0.3s ease 0s;
 }
 
-.connect-button:hover{
+.add-to-desktop-btn:hover{
     background-color: rgba(0, 136, 169, 0.8);
 }
 
@@ -364,7 +364,7 @@ h1{
         width: 32px;
     }
 
-    .connect-button{
+    .add-to-desktop-btn{
         display: none;
     }
 
