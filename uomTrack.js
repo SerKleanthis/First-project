@@ -140,23 +140,6 @@
       var clone = atheletesTable[pointer];
       atheletesTable.push(clone);
       createTable();
-      
-      // console.log(parentNode);
-      // console.log(rowClone);
-
-
-      // console.log(item.children.cells);
-      // var thisIsTheArrayWithRowsChlidrens = item.children.length;
-
-      // var item = item.parentNode.parentNode.parentNode;
-      
-      // for(var i = 0; i<thisIsTheArrayWithRowsChlidrens; i++){
-      //   console.log(thisIsTheArrayWithRowsChlidrens[i]);
-
-
-      // }
-      // var clone = item.cloneNode(true);
-      // insertAfter(clone, btn);
 
     }
   
@@ -220,6 +203,7 @@
             var img2 = document.createElement('img');
             
             img2.src = imagePrefix + atheletesTable[i][2] +'.svg';
+            // console.log('------------->'+img2.src.toString());
             img2.width = 20;
 
             var text2 = document.createTextNode(atheletesTable[i][1]);
@@ -341,7 +325,4 @@
           }
         }
       }
-
-  
-
 }());
