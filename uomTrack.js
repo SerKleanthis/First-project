@@ -50,8 +50,8 @@
         // tableBody.innerHTML = '';
         // console.log('clc'+copyButton[i]);
         // copyEvent(i);
-      });
-    }
+        });
+      }
 
       for(var i=0; i<deleteButton.length; i++) {
         deleteButton[i].addEventListener('click', function(){

@@ -23,7 +23,7 @@ window.addEventListener('beforeinstallprompt', function(e) {
 
     defferedPrompt.userChoice.then(function(choiceResult) {
       if (choiceResult.outcome === 'accepted') {
-        addButton.style.visibility = 'hidden';
+        // addButton.style.visibility = 'hidden';
         defferedPrompt = null;
         console.log('User accepted the A2HS prompt');
       } else {
@@ -35,7 +35,7 @@ window.addEventListener('beforeinstallprompt', function(e) {
 });
 
 window.addEventListener('appinstalled', function () {
-  addButton.style.visibility = 'hidden';
+  // addButton.style.visibility = 'hidden';
   defferedPrompt = null;
   console.log('PWA was installed');
 });
