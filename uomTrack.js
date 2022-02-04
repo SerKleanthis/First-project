@@ -35,42 +35,51 @@
     const results = document.getElementById('results');
     const personal = document.getElementById('personal');
     var copyButton = document.getElementsByClassName('copyButton');
+    var deleteButton = document.getElementsByClassName('deleteButton');
+    // var oldTableLength = atheletesTable.length;
 
     // OnLoad function 
     window.onload = function() {
       createTable();
 
-      var deleteButton = document.getElementsByClassName('deleteButton');
-
       for(var i=0; i<copyButton.length; i++) {
         copyButton[i].addEventListener('click', function(){
-        var rowParent = this.parentNode.parentNode.parentNode;
-        addCopyEvent(rowParent);
-
-        // tableBody.innerHTML = '';
-        // console.log('clc'+copyButton[i]);
-        // copyEvent(i);
+          var rowParent = this.parentNode.parentNode.parentNode;
+          addEvents(rowParent);
         });
       }
-
       for(var i=0; i<deleteButton.length; i++) {
         deleteButton[i].addEventListener('click', function(){
-
-          if(tableBody.children.length < 2){
-            alert('You can not delete the last element!');
-          } else {
-            var rowParent = this.parentNode.parentNode.parentNode;
-            rowParent.remove();
-          }
+          var rowParent = this.parentNode.parentNode.parentNode;
+          deleteEvent(rowParent);
         })
       }
         
     }
 
+    function deleteEvent(parent){
+      if(tableBody.children.length < 2){
+        alert('You can not delete the last element!');
+      } else {
+        parent.remove();
+      }
+    }
+
     // Create a copy of line
-    function addCopyEvent(btn){
+    function addEvents(btn){
       var clone = btn.cloneNode(true);
       insertAfter(clone, btn);
+      // Add copy event listener
+      var tempCopyButton = clone.children[7].getElementsByClassName('copyButton');
+      tempCopyButton[0].addEventListener('click', () =>{
+        addEvents(clone);
+      })
+
+      // Add delete event listener
+      var tempDelButton = clone.children[7].getElementsByClassName('deleteButton');
+      tempDelButton[0].addEventListener('click', function(){
+        deleteEvent(clone);
+      })
     }
 
     // Calculate the Best, worst and average time
@@ -82,7 +91,6 @@
       var chArray =  tableBody.children;
       var totalRows = tableBody.children.length;
       var arrayUpdated = [];
-
 
       var total = 0.0;
       var count = 0;
@@ -145,7 +153,6 @@
   
     // Create table
     function createTable(){
-      console.log('test');
 
         for(var i=0; i<atheletesTable.length; i++){
 
@@ -157,8 +164,6 @@
             td1.contentEditable = 'true';
             var text1;
 
-            
-            
             var a1 = document.createElement('a');
             a1.classList.add('custom-rank')
             var textValue = '';
