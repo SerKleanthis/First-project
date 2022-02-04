@@ -145,6 +145,7 @@
   
     // Create table
     function createTable(){
+      console.log('test');
 
         for(var i=0; i<atheletesTable.length; i++){
 

@@ -14,7 +14,6 @@ const addButton = document.getElementById('A2HS');
 // addButton.style.display = 'none';
 
 window.addEventListener('beforeinstallprompt', function(e) {
-  console.log('asd')
   e.preventDefault();
   defferedPrompt = e;
   addButton.style.visibility = 'visible';
