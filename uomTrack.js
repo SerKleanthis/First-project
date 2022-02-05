@@ -91,7 +91,7 @@
     var count = 0;
     var best, worst;
     for(var i=0; i < totalRows; i++){
-      var localRes =chArray[i].cells[4].innerHTML;
+      var localRes = chArray[i].cells[4].innerHTML;
 
       if(localRes != '-'){
 
@@ -128,9 +128,10 @@
   personal.addEventListener('click', function(){
     sortTable(5);
   });
-  // document.body.addEventListener('click', function(){
-  //   calculateScores(tableBody);
-  // });
+  tableBody.addEventListener('input', ()=>{
+    calculateScores(tableBody);
+  });
+  // tableBody.addEventListener('change', )
 
   // Create table
   function createTable(){
@@ -146,36 +147,12 @@
 
         var a1 = document.createElement('a');
         a1.classList.add('custom-rank')
-        var textValue = '';
-        var flag = false;
-        switch(atheletesTable[i][0]){
-          case '1':
-            a1.id = 'gold';
-            textValue = 'G';
-            flag = true;
-            break;
-          case '2':
-            a1.id = 'silver';
-            textValue = 'S';
-            flag = true;
-            break;
-          case '3':
-            a1.id = 'bronze';
-            textValue = 'B';
-            flag = true;
-            break;
-          case '7':
-            textValue = '-';
-            flag = true;
-            break;
-          case '8':
-            textValue = '-';
-            flag = true;
-            break;
-        }
+ 
+        var model = setRankSymbols(atheletesTable[i][0]);
 
-        if(flag){
-          text1 = document.createTextNode(textValue);
+        if(model.flag){
+          text1 = document.createTextNode(model.text);
+          a1.id = model.id;
           a1.appendChild(text1);
           td1.appendChild(a1);
         }else{
@@ -254,6 +231,44 @@
         tableBody.appendChild(tr);
     }
     console.log('Initial Table loaded!');
+  }
+
+  // function updateTable(content){
+  //   console.log('c' + tableBody.children.chArray[0].cells[4].innerHTML)
+  //   console.log('content: '+ content.innerHTML);
+  // }
+
+  // Calculates rank
+  function setRankSymbols(line){
+    var model = {id:'', text:'', flag: false};
+
+    switch(line){
+      case '1':
+        model.id = 'gold';
+        model.text = 'G';
+        model.flag = true;
+        break;
+      case '2':
+        model.id = 'silver';
+        model.text = 'S';
+        model.flag = true;
+        break;
+      case '3':
+        model.id = 'bronze';
+        model.text = 'B';
+        model.flag = true;
+        break;
+      case '7':
+        model.text = '-';
+        model.flag = true;
+        break;
+      case '8':
+        model.text = '-';
+        model.flag = true;
+        break;
+    }
+
+    return model;
   }
 
   // Table sorting
