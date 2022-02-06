@@ -3,18 +3,89 @@
 
   // Data declaration
   const imagePrefix = 'https://hatscripts.github.io/circle-flags/flags/';
-
-  var atheletesTable = [ 
-      ['1', 'ITA', 'it', 'Lamont Marcell Jacobs', 27, 9.80, 9.80, '-'],
-      ['2', 'USA', 'us', 'Fred Kerley', 26, 9.84, 9.84, '-'],
-      ['3', 'CAN', 'ca', 'Andre De Grasse', 27, 9.89, 9.89, '-'],
-      ['4', 'RSA', 'za', 'Akani Simbine', 28, 9.93, 9.84, '-'],
-      ['5', 'USA', 'us', 'Ronnie Baker', 28, 9.95, 9.83, '-'],
-      ['6', 'CHN', 'cn', 'Bingtian Su', 32, 9.98, 9.83, '-'],
-      ['7', 'NGR', 'ng', 'Enoch Adegoke', 21, '-', 9.98, 'Didn\'t finish'],
-      ['8', 'GBR', 'gb', 'Zharnel Hughes', 26, '-', 9.91, 'Disqualified'],
-  ]
-
+  var athletes = [
+    {
+      position: 1,
+      country: 'ITA',
+      countryPrefix: 'it',
+      name: 'Lamont Marcell Jacobs',
+      age: 27,
+      result: 9.8,
+      personalBest: 9.8,
+      notes: '-' 
+    },
+    {
+      position: 2,
+      country: 'USA',
+      countryPrefix: 'us',
+      name: 'Fred Kerley',
+      age: 26,
+      result: 9.84,
+      personalBest: 9.84,
+      notes: '-' 
+    },
+    {
+      position: 3,
+      country: 'CAN',
+      countryPrefix: 'ca',
+      name: 'Andre De Grasse',
+      age: 27,
+      result: 9.89,
+      personalBest: 9.89,
+      notes: '-' 
+    },
+    {
+      position: 4,
+      country: 'RSA',
+      countryPrefix: 'za',
+      name: 'Akani Simbine',
+      age: 28,
+      result: 9.93,
+      personalBest: 9.84,
+      notes: '-' 
+    },
+    {
+      position: 5,
+      country: 'USA',
+      countryPrefix: 'us',
+      name: 'Ronnie Baker',
+      age: 28,
+      result: 9.95,
+      personalBest: 9.83,
+      notes: '-' 
+    },
+    {
+      position: 6,
+      country: 'CHN',
+      countryPrefix: 'cn',
+      name: 'Bingtian Su',
+      age: 32,
+      result: 9.98,
+      personalBest: 9.83,
+      notes: '-' 
+    },
+    {
+      position: 7,
+      country: 'NGR',
+      countryPrefix: 'ng',
+      name: 'Enoch Adegoke',
+      age: 21,
+      result: '',
+      personalBest: 9.98,
+      notes: 'Didn\'t finish' 
+    },
+    {
+      position: 8,
+      country: 'GBR',
+      countryPrefix: 'gb',
+      name: 'Zharnel Hughes',
+      age: 26,
+      result: '',
+      personalBest: 9.91,
+      notes: 'Disqualified' 
+    }
+  ];
+    
   // Elements
   var table = document.getElementById('table');
   var tableBody = document.getElementById('table-body');
@@ -25,7 +96,6 @@
   const personal = document.getElementById('personal');
   var copyButton = document.getElementsByClassName('copyButton');
   var deleteButton = document.getElementsByClassName('deleteButton');
-  // var oldTableLength = atheletesTable.length;
 
   // OnLoad function 
   window.onload = function() {
@@ -92,9 +162,8 @@
     var best, worst;
     for(var i=0; i < totalRows; i++){
       var localRes = chArray[i].cells[4].innerHTML;
-
-      if(localRes != '-'){
-
+     
+      if (localRes != ''){
         var floatRes = parseFloat(localRes);
         arrayUpdated.push(floatRes);
         total += floatRes;
@@ -105,7 +174,7 @@
     var best = Math.min(...arrayUpdated);
     var worst = Math.max(...arrayUpdated);
     var avg = total / count;
-
+    
     bestScore.innerHTML = best;
     worstScore.innerHTML = worst;
     avgScore.innerHTML = avg;
@@ -113,32 +182,31 @@
   }
 
   // Actions
-  team.addEventListener('click', function(){
+  team.addEventListener('click', ()=>{
     sortTable(1);
   });
-  athlete.addEventListener('click', function(){
+  athlete.addEventListener('click', ()=>{
     sortTable(2);
   });
-  age.addEventListener('click', function(){
+  age.addEventListener('click', ()=>{
     sortTable(3);
   });
-  results.addEventListener('click', function(){
+  results.addEventListener('click', ()=>{
     sortTable(4);
   });
-  personal.addEventListener('click', function(){
+  personal.addEventListener('click', ()=>{
     sortTable(5);
   });
   tableBody.addEventListener('input', ()=>{
     calculateScores(tableBody);
   });
-  // tableBody.addEventListener('change', )
 
   // Create table
   function createTable(){
 
-    for(var i=0; i<atheletesTable.length; i++){
+    athletes.forEach((athlete) =>{
 
-        var tr = document.createElement('tr');
+      var tr = document.createElement('tr');
 
         // td1, Position table data creation
         var td1 = document.createElement('td');
@@ -148,7 +216,7 @@
         var a1 = document.createElement('a');
         a1.classList.add('custom-rank')
  
-        var model = setRankSymbols(atheletesTable[i][0]);
+        var model = setRankSymbols(athlete);
 
         if(model.flag){
           text1 = document.createTextNode(model.text);
@@ -156,7 +224,7 @@
           a1.appendChild(text1);
           td1.appendChild(a1);
         }else{
-          text1 = document.createTextNode(atheletesTable[i][0]);
+          text1 = document.createTextNode(athlete.position);
           td1.appendChild(text1);
         }
 
@@ -165,11 +233,10 @@
         td2.contentEditable = 'true';
         var img2 = document.createElement('img');
         
-        img2.src = imagePrefix + atheletesTable[i][2] +'.svg';
-        // console.log('------------->'+img2.src.toString());
+        img2.src = imagePrefix + athlete.countryPrefix +'.svg';
         img2.width = 20;
 
-        var text2 = document.createTextNode(atheletesTable[i][1]);
+        var text2 = document.createTextNode(athlete.country);
         
         td2.appendChild(img2);
         td2.appendChild(text2);
@@ -177,31 +244,31 @@
         // td3, Athlete name tabe data creation
         var td3 = document.createElement('td');
         td3.contentEditable = 'true';
-        var text3 = document.createTextNode(atheletesTable[i][3]);
+        var text3 = document.createTextNode(athlete.name);
         td3.appendChild(text3);
 
         // td4, Age table data creation
         var td4 = document.createElement('td');
         td4.contentEditable = 'true';
-        var text4 = document.createTextNode(atheletesTable[i][4]);
+        var text4 = document.createTextNode(athlete.age);
         td4.appendChild(text4);
 
         // td5, Time table data creation
         var td5 = document.createElement('td');
         td5.contentEditable = 'true';
-        var text5 = document.createTextNode(atheletesTable[i][5]);
+        var text5 = document.createTextNode(athlete.result);
         td5.appendChild(text5);
 
         // td6, Best Time table data creation
         var td6 = document.createElement('td');
         td6.contentEditable = 'true';
-        var text6 = document.createTextNode(atheletesTable[i][6]);
+        var text6 = document.createTextNode(athlete.personalBest);
         td6.appendChild(text6);
 
         // td7, Notes table data creation
         var td7 = document.createElement('td');
         td7.contentEditable = 'true';
-        var text7 = document.createTextNode(atheletesTable[i][7]);
+        var text7 = document.createTextNode(athlete.notes);
         td7.appendChild(text7);
 
         // td8, Actions
@@ -229,43 +296,36 @@
         tr.appendChild(td8);
 
         tableBody.appendChild(tr);
-    }
+
+    })
     console.log('Initial Table loaded!');
   }
 
-  // function updateTable(content){
-  //   console.log('c' + tableBody.children.chArray[0].cells[4].innerHTML)
-  //   console.log('content: '+ content.innerHTML);
-  // }
-
   // Calculates rank
-  function setRankSymbols(line){
+  function setRankSymbols(athlete){
     var model = {id:'', text:'', flag: false};
 
-    switch(line){
-      case '1':
+    switch(athlete.position){
+      case 1:
         model.id = 'gold';
         model.text = 'G';
         model.flag = true;
         break;
-      case '2':
+      case 2:
         model.id = 'silver';
         model.text = 'S';
         model.flag = true;
         break;
-      case '3':
+      case 3:
         model.id = 'bronze';
         model.text = 'B';
         model.flag = true;
         break;
-      case '7':
-        model.text = '-';
-        model.flag = true;
-        break;
-      case '8':
-        model.text = '-';
-        model.flag = true;
-        break;
+    }
+
+    if (athlete.result === ''){
+      model.text = '-';
+      model.flag = true;
     }
 
     return model;
