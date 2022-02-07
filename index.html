@@ -53,6 +53,21 @@
                  <a class="athlete""></a>Ζέρνολ Αντεγκόκε 
                  δεν ολοκλήρωσε την κούρσα.
             </p>
+            <div class="filters">
+                <a>Φίλτρα:</a>
+                <button id="all"><a>Όλα</a></button>
+                <button id="first-three"><a>Πρώτοι τρεις</a></button>
+                <a>Ανά χώρα: </a>
+                <div class="filters-by-country">
+                    <a id="it"></a>
+                    <a id="us"></a>
+                    <a id="ca"></a>
+                    <a id="za"></a>
+                    <a id="cn"></a>
+                    <a id="ng"></a>
+                    <a id="gb"></a>
+                </div>
+            </div>
             <table class="uomTrack" id="table">
                 <thead>
                     <tr>
@@ -68,7 +83,7 @@
                 </thead>
                 <tbody id="table-body">
                 </tbody>
-                <tfoot>
+                <!-- <tfoot>
                     <tr>
                         <td>Totals</td>
                         <td>Best</td>
@@ -79,8 +94,22 @@
                         <td id="avg"></td>
                         <td></td>
                     </tr> 
-                </tfoot> 
-            </table>     
+                </tfoot>  -->
+            </table>
+            <div class="totals">
+                <div>
+                    <a>Best: </a>
+                    <a id="best"></a>
+                </div>
+                <div>
+                    <a>Worst: </a>
+                    <a id="worst"></a>
+                </div>
+                <div>
+                    <a>Average: </a>
+                    <a id="avg"></a>
+                </div>   
+            </div>   
         </div>  
         <footer class="olympics-footer">
             <div class="footer-social-icons">
