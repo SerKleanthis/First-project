@@ -153,6 +153,10 @@ h1{
     cursor: pointer;
 }
 
+#team, #athlete, #age, #results, #personal{
+    cursor: pointer;
+}
+
 /* athlete style and hover */
 .athlete{
     color: #0088a9;
@@ -160,7 +164,6 @@ h1{
 
 .athlete:hover{
     color: #ee2e4e;
-
 }
 
 /* table css*/
