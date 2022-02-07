@@ -36,8 +36,6 @@ h1{
     grid-area: title;
 }
 
-
-
 /* classes */
 
 /* navigator menu */
@@ -119,6 +117,40 @@ h1{
 .table-desc{
     margin: 8px;
     grid-area: table-desc;
+}
+
+.filters{
+    text-align: start;
+    grid-area: filters;
+    margin-left: 10px;
+}
+
+.filters-by-country{
+    display: inline;
+}
+
+.filters a{
+    color: #24252a;
+}
+
+.totals{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    grid-area: totals;
+}
+.totals a{
+    color: #24252a;
+}
+
+#it, #us, #ca, #za, #cn, #ng, #gb{
+    margin: 2px;
+}
+
+#it:hover, #us:hover, #ca:hover, #za:hover, 
+#cn:hover, #ng:hover, #gb:hover{
+    color:#0088a9;
+    cursor: pointer;
 }
 
 /* athlete style and hover */
@@ -217,8 +249,9 @@ h1{
         "info info info"
         ". table-tittle ."
         "table-desc table-desc table-desc"
+        "filters filters filters"
         "tb-olymp tb-olymp tb-olymp"
-        ". top-video ."
+        ". totals ."
 }
 
 /* footer style */
@@ -300,6 +333,10 @@ h1{
         top: -16px;
     }
 
+    .filters{
+        justify-content: space-around;
+    }
+
     .main-content{
         width: 95%;
         grid-template-areas: 
@@ -307,8 +344,9 @@ h1{
         "info info info"
         ". table-tittle ."
         "table-desc table-desc table-desc"
+        "filters filters filters"
         "tb-olymp tb-olymp tb-olymp"
-        ". top-video ."
+        ". totals ."
     }
 
     .uomTrack{
@@ -380,7 +418,8 @@ h1{
         "info"
         "table-tittle"
         "table-desc"
+        "filters"
         "tb-olymp"
-        "top-video"
+        "totals"
     }
 }
