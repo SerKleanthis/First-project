@@ -2,7 +2,8 @@
   'use strict';
 
   // Data declaration
-  const imagePrefix = 'https://hatscripts.github.io/circle-flags/flags/';
+  // const imagePrefix = 'https://hatscripts.github.io/circle-flags/flags/';
+  const imagePrefix = './assets/flags/';
   var athletes = createInitTable();
     
   // Elements
@@ -41,6 +42,27 @@
     }
     
     calculateScores(tableBody);
+
+    showAlert();
+  }
+
+  // Display prompt for title's name and save it to local storage
+  function showAlert(){
+
+    if (localStorage.getItem('title') == null){
+      var answer;
+      var title = prompt('Enter a title name: ', '100 μέτρα ανδρών');
+      if (title == null || title == ''){
+        answer = 'Home';
+      }else{
+        answer = title;
+      }
+      document.title = answer;
+      localStorage.setItem('title', answer);
+    }else{
+      document.title = localStorage.getItem('title');
+    }
+    
   }
 
   // Adds duplicate and delete event 
@@ -163,6 +185,7 @@
       var img2 = document.createElement('img');
       
       img2.src = imagePrefix + athlete.countryPrefix +'.svg';
+      // console.log(img2.src);
       img2.width = 20;
       var textA = document.createElement('a');
       var text2 = document.createTextNode(athlete.country);
